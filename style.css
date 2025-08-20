@@ -8,7 +8,7 @@ body {
 #all-contents {
     max-width: 800px;
     margin: auto;
-    font-family:cursive
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 /* navigation menu */
@@ -67,7 +67,7 @@ main {
 
 /* interests section styles */
 #interests {
-    border: 4px silver ridge;
+    border-style: dotted;
     padding: 8px;
     margin-top: 20px;
 }
