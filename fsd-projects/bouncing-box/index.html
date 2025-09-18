@@ -8,7 +8,7 @@
       .box {
         width: 70px;
         height: 70px;
-        background-color: teal;
+        background-color: rgb(195, 238, 238);
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -21,12 +21,17 @@
 
       .board {
         height: 100vh;
+        background-image: url("fsd-projects/bouncing-box/box-background.png");
+        background-color: #cccccc;
       }
+      /* body {
+         
+      } */
     </style>
     <!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
   </head>
 
-  <body class="board">
+  <body class="board"> 
     <!-- HTML for the box -->
     <div class="box">?</div>
 
@@ -42,7 +47,7 @@
         var box = jQuery(".box"); // reference to the HTML .box element
         var board = jQuery(".board"); // reference to the HTML .board element
         var boardWidth = board.width(); // the maximum X-Coordinate of the screen
-
+        var boardHeight = jQuery(window).height();
         // update the boardWidth variable when the window is resized
         jQuery(window).on("resize", function () {
           boardWidth = board.width();
@@ -55,8 +60,9 @@
         box.on("click", handleBoxClick);
 
         // moves the Box to a new position on the screen along the X-Axis
-        function moveBoxTo(newPositionX) {
+        function moveBoxTo(newPositionX, newPositionY) {
           box.css("left", newPositionX);
+          box.css("top", newPositionY);
         }
 
         // changes the text displayed on the Box
@@ -69,10 +75,12 @@
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
+      var positionX = 0;
+      var points = 0;
+      var speed = 10;
 
-
-
-
+      var positionY = 0;
+      var speedY = 10;
 
         /**
          * This Function will be called 20 times/second.
@@ -80,10 +88,24 @@
          * If the box drifts off the screen, turn it around!
          */
         function update() {
+      moveBoxTo(positionX, positionY);
+      positionX += speed;
+      positionY += speedY;
+      if (positionX > boardWidth) {
+        speed *= -1;
+      }
+      
+      if (positionX < 0) {
+        speed *= -1;
+      }
+      
+      if (positionY > boardHeight) {
+        speedY *= -1;
+      }
 
-        
-
-          
+      if (positionY < 0) {
+        speedY *= -1;
+      }
         }
 
         /**
@@ -94,9 +116,11 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
-
-
-
+        positionX = 0;
+      points = points + 1;
+        changeBoxText(points);
+        variableName += 3; 
+        speed = 3 * points + 10;
 
         }
 
