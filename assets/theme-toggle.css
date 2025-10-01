@@ -1,0 +1,244 @@
+/* Gear/settings button and theme overrides */
+:root {
+  --transition-fast: 180ms ease;
+}
+
+/* Ensure borders/paddings don't change element size between themes */
+*,
+*::before,
+  
+*::after {
+  box-sizing: border-box;
+}
+
+/* gear button */
+.theme-gear {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#fffdf7, #f3ebd8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  z-index: 1200;
+  transition: transform var(--transition-fast),
+    background var(--transition-fast);
+}
+.theme-gear:hover {
+  transform: rotate(10deg) scale(1.02);
+}
+
+.theme-gear svg {
+  width: 22px;
+  height: 22px;
+  fill: #4a3726;
+}
+
+/* Gear appearance in dark theme */
+.dark-theme .theme-gear {
+  background: linear-gradient(#3b2b1f, #271a10);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.dark-theme .theme-gear svg {
+  fill: #f3e8d7;
+}
+
+/* settings popover */
+.theme-popover {
+  position: fixed;
+  top: 68px;
+  right: 16px;
+  min-width: 220px;
+  background: #fff;
+  color: #222;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  padding: 12px;
+  z-index: 1199;
+  display: none;
+}
+.theme-popover.open {
+  display: block;
+}
+.theme-popover h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+.theme-popover .controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.theme-popover button {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+/* Specific styling for Light/Dark buttons to match aesthetics */
+.theme-popover #theme-light-btn {
+  background: linear-gradient(#fffaf0, #f3e9d8);
+  border-color: #e5cfad;
+  color: #3b2b1f;
+}
+.theme-popover #theme-dark-btn {
+  background: linear-gradient(#3b2b1f, #2c1e15);
+  border-color: #6b4f3b;
+  color: #f3e2cf;
+}
+
+/* Indicate active choice based on current theme */
+html.dark-theme .theme-popover #theme-dark-btn {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.04);
+}
+html:not(.dark-theme) .theme-popover #theme-light-btn {
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.04);
+}
+/* Active button stronger visual */
+.theme-popover button.active {
+  outline: 2px solid rgba(255, 235, 200, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme overrides */
+.dark-theme body {
+  /* warm, dark paper tone */
+  background: linear-gradient(180deg, #2b2118, #201713) !important;
+  color: #efe2cf !important;
+}
+.dark-theme #all-contents {
+  background: #2f241b !important;
+  border-color: #6b4f3b !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45) inset;
+}
+.dark-theme nav {
+  background: linear-gradient(180deg, #3b2b1f, #281a11) !important;
+}
+.dark-theme a,
+.dark-theme #navanchor {
+  color: #efe2cf !important;
+}
+.dark-theme .sidebar,
+.dark-theme .portfolio-card,
+.dark-theme .slideshow-container,
+.dark-theme .camera-photo-frame {
+  background: #37281f !important;
+  border-color: #6b4f3b !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+.dark-theme img {
+  /* more vintage sepia, slightly faded */
+  filter: sepia(0.6) contrast(0.9) brightness(0.88) saturate(0.85) !important;
+  border-color: rgba(80, 60, 44, 0.9) !important;
+}
+.dark-theme .modal,
+.dark-theme .modal.open {
+  background: linear-gradient(
+    180deg,
+    rgba(20, 14, 10, 0.9),
+    rgba(12, 8, 6, 0.95)
+  ) !important;
+}
+
+/* subtle paper texture overlay (non-blocking) */
+.dark-theme::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.01) 9px
+    ),
+    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1.5px);
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+  z-index: 1100;
+}
+/* Improve legibility for headings and interest box */
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3 {
+  color: #f7ead6 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.dark-theme #navanchor {
+  font-weight: 600;
+}
+.dark-theme #interests {
+  background: rgba(255, 245, 230, 0.06) !important;
+  border: 1px solid rgba(255, 240, 210, 0.06) !important;
+  color: #f3e8d7 !important;
+  padding: 10px !important;
+}
+.dark-theme #interests h3,
+.dark-theme #interests li {
+  color: #f3e8d7 !important;
+}
+
+/* Make main titles easier to read on all themes */
+nav h1,
+.portfolio-title,
+.gallery-title {
+  font-weight: 700;
+  letter-spacing: 1px;
+  /* use the same visual effect as light mode for perfect parity */
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.35);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Normalize header/nav link appearance across themes */
+#navanchor,
+nav a {
+  font-weight: 600;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.18);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.dark-theme #navanchor,
+.dark-theme nav a {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+}
+
+.dark-theme nav h1,
+.dark-theme .portfolio-title,
+.dark-theme .gallery-title {
+  color: #f7e9d6 !important;
+  /* apply the light-mode shadow here as well so headings look identical */
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.35) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Slightly increase header sizes for better legibility */
+.portfolio-title {
+  font-size: 3.4rem;
+}
+.gallery-title {
+  font-size: 2.9rem;
+}
+
+/* small responsive tweak so button doesn't overlap important content */
+@media (max-width: 600px) {
+  .theme-gear {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+  .theme-popover {
+    right: 12px;
+    top: 56px;
+    min-width: 180px;
+  }
+}
