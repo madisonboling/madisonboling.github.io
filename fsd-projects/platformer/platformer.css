@@ -1,10 +1,38 @@
 body {
-  margin: 0px;
+  margin: 0;
+  background: #f5ecd7;
+  color: #5a4632;
+  font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+  font-size: 20px;
+  min-height: 100vh;
 }
 
 canvas {
-  background-color: rgb(255, 255, 255);
-  margin: 20px;
+  background: #fffbe9;
+  margin: 40px auto 0 auto;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #bfae8a55;
+  border: 2.5px solid #bfae8a;
+}
+
+.platformer-title {
+  font-family: "EB Garamond", Garamond, serif;
+  color: #7c5c36;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-top: 32px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #e7dbc3;
+  font-weight: 700;
+  background: #f5ecd7cc;
+  padding: 8px 32px;
+  border-radius: 12px;
+  border: 1.5px solid #d1bfa3;
+  box-shadow: 0 2px 12px #bfae8a33;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 img {

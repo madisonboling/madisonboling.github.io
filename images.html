@@ -4,48 +4,51 @@
     <head>
         <title>Digital Camera Gallery</title>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=EB+Garamond:wght@500;700&display=swap');
             body {
-                background: #181c20;
-                color: #e0e0e0;
-                font-family: 'Quicksand', 'Arial Rounded MT Bold', 'Arial', sans-serif;
+                background: #f5ecd7;
+                color: #5a4632;
+                font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
                 font-size: 20px;
                 padding: 0;
                 margin: 0;
             }
-                        #all-contents {
-                            max-width: 1200px;
-                            margin: auto;
-                            background: #181c20;
-                            border-radius: 24px;
-                            box-shadow: 0 4px 32px #0006;
-                            padding-bottom: 40px;
-                            min-height: 100vh;
-                        }
+            #all-contents {
+                max-width: 1200px;
+                margin: auto;
+                background: #f5ecd7;
+                border-radius: 18px;
+                box-shadow: 0 4px 32px #bfae8a55;
+                padding-bottom: 40px;
+                min-height: 100vh;
+                border: 2px solid #d1bfa3;
+            }
          
             /* navigation menu */
             nav {
-                background: #23272b;
+                background: #e7dbc3;
                 margin: 0 auto;
                 display: flex;
                 padding: 18px 32px;
-                border-radius: 24px 24px 0 0;
-                border-bottom: 1px solid #222;
+                border-radius: 18px 18px 0 0;
+                border-bottom: 2px solid #d1bfa3;
                 margin-bottom: 0;
                 align-items: center;
-                box-shadow: 0 2px 12px #0008;
+                box-shadow: 0 2px 12px #bfae8a55;
+                font-family: 'EB Garamond', Garamond, serif;
             }
             h1 {
                 display: flex;
                 align-items: center;
-                color: #fff;
+                color: #7c5c36;
                 flex: 1;
                 margin: 0;
-                font-family: 'Quicksand', 'Arial Rounded MT Bold', 'Arial', sans-serif;
-                font-size: 38px;
+                font-family: 'EB Garamond', Garamond, serif;
+                font-size: 44px;
                 padding: 2px;
-                letter-spacing: 1.5px;
-                text-shadow: 0 2px 8px #000a;
+                letter-spacing: 2px;
+                text-shadow: 0 2px 8px #e7dbc3;
+                font-weight: 700;
             }
             #nav-ul {
                 list-style-image: none;
@@ -56,10 +59,15 @@
             }
             #navanchor {
                 text-decoration: none;
-                color: #e0e0e0;
+                color: #7c5c36;
                 padding-right: 25px;
-                font-family: 'Quicksand', 'Arial Rounded MT Bold', 'Arial', sans-serif;
-                font-size: 18px;
+                font-family: 'EB Garamond', Garamond, serif;
+                font-size: 22px;
+                letter-spacing: 1px;
+                transition: color 0.2s;
+            }
+            #navanchor:hover {
+                color: #bfae8a;
             }
         
             /* main container area beneath menu */
@@ -72,10 +80,10 @@
                 margin-top: 40px;
             }
             .camera-photo-frame {
-                background: #23272b;
-                border: none;
-                border-radius: 18px;
-                box-shadow: 0 4px 24px #0008, 0 0 0 2px #fff1 inset;
+                background: #f3e3c3;
+                border: 2.5px solid #bfae8a;
+                border-radius: 14px;
+                box-shadow: 0 4px 24px #bfae8a55, 0 0 0 2px #fff6 inset;
                 padding: 0;
                 margin: 0;
                 position: relative;
@@ -101,26 +109,76 @@
             .sticker-bl { bottom: 8px; left: 12px; }
             .sticker-br { bottom: 8px; right: 12px; }
             .camera-photo-frame:hover {
-                box-shadow: 0 8px 32px #942e9755, 0 0 0 4px #ad99b4 inset;
+                box-shadow: 0 8px 32px #bfae8a99, 0 0 0 4px #e7dbc3 inset;
                 transform: translateY(-4px) scale(1.03);
             }
             .camera-photo-frame img {
                 width: 240px;
                 height: 160px;
                 object-fit: cover;
+                border-radius: 8px;
+                box-shadow: 0 2px 12px #bfae8a99;
+                border: 2px solid #d1bfa3;
+                cursor: pointer;
+                filter: sepia(0.35) contrast(0.95) brightness(0.97);
+            }
+            /* Modal styles */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                overflow: auto;
+                background: rgba(245,236,215,0.97);
+                justify-content: center;
+                align-items: center;
+            }
+            .modal.open {
+                display: flex;
+            }
+            .modal-img {
+                max-width: 90vw;
+                max-height: 85vh;
                 border-radius: 12px;
-                box-shadow: 0 2px 12px #000a;
+                box-shadow: 0 8px 40px #bfae8a99;
+                border: 6px solid #d1bfa3;
+                background: #f3e3c3;
+                animation: popin 0.2s;
+                filter: sepia(0.35) contrast(0.95) brightness(0.97);
+            }
+            @keyframes popin {
+                from { transform: scale(0.8); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+            .modal-close {
+                position: absolute;
+                top: 32px;
+                right: 48px;
+                font-size: 2.5rem;
+                color: #7c5c36;
+                cursor: pointer;
+                z-index: 1100;
+                background: none;
                 border: none;
+                filter: drop-shadow(0 2px 8px #e7dbc3);
+                transition: color 0.2s;
+            }
+            .modal-close:hover {
+                color: #bfae8a;
             }
             .gallery-title {
-                font-family: 'Quicksand', 'Arial Rounded MT Bold', 'Arial', sans-serif;
-                color: #fff;
-                font-size: 2.2rem;
+                font-family: 'EB Garamond', Garamond, serif;
+                color: #7c5c36;
+                font-size: 2.7rem;
                 text-align: center;
                 margin-top: 40px;
                 margin-bottom: 0;
-                letter-spacing: 2px;
-                text-shadow: 0 2px 8px #000a;
+                letter-spacing: 2.5px;
+                text-shadow: 0 2px 8px #e7dbc3;
+                font-weight: 700;
             }
             .bottomText {
                 background: beige;
@@ -208,78 +266,56 @@
 <!-- Modern Digital Camera Gallery -->
 <div class="gallery-title">Digital Camera Gallery</div>
 <div class="camera-gallery">
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4379.JPG" alt="Photo 1">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4385.JPG" alt="Photo 2">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4389.JPG" alt="Photo 3">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4398.JPG" alt="Photo 4">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4391.JPG" alt="Photo 5">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4387.JPG" alt="Photo 6">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4399.JPG" alt="Photo 7">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4396.JPG" alt="Photo 8">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5197.JPG" alt="Photo 9">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5196.JPG" alt="Photo 10">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5201.JPG" alt="Photo 11">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5200.JPG" alt="Photo 12">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4211.JPG" alt="Photo 13">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4205.JPG" alt="Photo 14">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5317.JPG" alt="Photo 15">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5318.JPG" alt="Photo 16">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5321.JPG" alt="Photo 17">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5320.JPG" alt="Photo 18">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5322.JPG" alt="Photo 19">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5319.JPG" alt="Photo 20">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4213.JPG" alt="Photo 21">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4200.JPG" alt="Photo 22">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_5324.JPG" alt="Photo 23">
-            </div>
-            <div class="camera-photo-frame">
-                <img src="assets/IMG_4198.JPG" alt="Photo 24">
-            </div>
+            <!-- Camera photo frames with click-to-enlarge -->
+            <div class="camera-photo-frame"><img src="assets/IMG_4379.JPG" alt="Photo 1" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4385.JPG" alt="Photo 2" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4389.JPG" alt="Photo 3" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4398.JPG" alt="Photo 4" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4391.JPG" alt="Photo 5" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4387.JPG" alt="Photo 6" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4399.JPG" alt="Photo 7" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4396.JPG" alt="Photo 8" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5197.JPG" alt="Photo 9" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5196.JPG" alt="Photo 10" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5201.JPG" alt="Photo 11" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5200.JPG" alt="Photo 12" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4211.JPG" alt="Photo 13" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4205.JPG" alt="Photo 14" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5317.JPG" alt="Photo 15" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5318.JPG" alt="Photo 16" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5321.JPG" alt="Photo 17" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5320.JPG" alt="Photo 18" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5322.JPG" alt="Photo 19" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5319.JPG" alt="Photo 20" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4213.JPG" alt="Photo 21" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4200.JPG" alt="Photo 22" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_5324.JPG" alt="Photo 23" onclick="openModal(this)"></div>
+            <div class="camera-photo-frame"><img src="assets/IMG_4198.JPG" alt="Photo 24" onclick="openModal(this)"></div>
+        <!-- Modal for enlarged image -->
+        <div id="imgModal" class="modal" onclick="closeModal(event)">
+            <button class="modal-close" onclick="closeModal(event)">&times;</button>
+            <img id="modalImg" class="modal-img" src="" alt="Enlarged photo">
+        </div>
 </div>
     </body>
+    <script>
+    // Modal logic for enlarging images
+    function openModal(imgElem) {
+        var modal = document.getElementById('imgModal');
+        var modalImg = document.getElementById('modalImg');
+        modalImg.src = imgElem.src;
+        modal.classList.add('open');
+    }
+    function closeModal(event) {
+        // Only close if background or close button is clicked
+        if (event.target.classList.contains('modal') || event.target.classList.contains('modal-close')) {
+            document.getElementById('imgModal').classList.remove('open');
+            document.getElementById('modalImg').src = '';
+        }
+    }
+    // Optional: close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal({target: document.getElementById('imgModal')});
+    });
+    </script>
 </html>

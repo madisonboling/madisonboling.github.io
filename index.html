@@ -1,50 +1,162 @@
 <!DOCTYPE html>
 <html>
   <head>
-     <link rel="icon" type="image/x-icon" href="assets/OIP-removebg-preview.png">
-    <title>Madison's first website</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/OIP-removebg-preview.png"
+    />
+    <title>Madison's First Website</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=EB+Garamond:wght@500;700&display=swap");
+      body {
+        background: #f5ecd7;
+        color: #5a4632;
+        font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+        font-size: 20px;
+        padding: 0;
+        margin: 0;
+      }
+      #all-contents {
+        max-width: 1200px;
+        margin: auto;
+        background: #f5ecd7;
+        border-radius: 18px;
+        box-shadow: 0 4px 32px #bfae8a55;
+        padding-bottom: 40px;
+        min-height: 100vh;
+        border: 2px solid #d1bfa3;
+      }
+      nav {
+        background: #e7dbc3;
+        margin: 0 auto;
+        display: flex;
+        padding: 18px 32px;
+        border-radius: 18px 18px 0 0;
+        border-bottom: 2px solid #d1bfa3;
+        margin-bottom: 0;
+        align-items: center;
+        box-shadow: 0 2px 12px #bfae8a55;
+        font-family: "EB Garamond", Garamond, serif;
+      }
+      h1 {
+        display: flex;
+        align-items: center;
+        color: #7c5c36;
+        flex: 1;
+        margin: 0;
+        font-family: "EB Garamond", Garamond, serif;
+        font-size: 44px;
+        padding: 2px;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 8px #e7dbc3;
+        font-weight: 700;
+      }
+      #nav-ul {
+        list-style-image: none;
+      }
+      .nav-li {
+        display: inline-block;
+        padding: 5px;
+      }
+      #navanchor {
+        text-decoration: none;
+        color: #7c5c36;
+        padding-right: 25px;
+        font-family: "EB Garamond", Garamond, serif;
+        font-size: 22px;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+      }
+      #navanchor:hover {
+        color: #bfae8a;
+      }
+      .sidebar {
+        margin-right: 25px;
+        margin-left: 32px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #f3e3c3;
+        border: 2.5px solid #bfae8a;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px #bfae8a55, 0 0 0 2px #fff6 inset;
+      }
+      .sidebar-img {
+        width: 200px;
+        border-radius: 5px;
+        border: 2.5px solid #bfae8a;
+        border-style: solid;
+        box-shadow: 0px 0px #bfae8a55;
+        filter: sepia(0.35) contrast(0.95) brightness(0.97);
+      }
+      .content {
+        flex: 1;
+        padding: 35px;
+      }
+      #interests {
+        border: 2.5px solid #bfae8a;
+        padding: 8px;
+        background: #f3e3c3;
+        border-radius: 12px;
+        margin-top: 24px;
+        box-shadow: 0 2px 12px #bfae8a44;
+        font-family: "EB Garamond", Garamond, serif;
+      }
+      h2,
+      h3 {
+        margin: 0px;
+        font-family: "EB Garamond", Garamond, serif;
+        color: #7c5c36;
+      }
+    </style>
   </head>
-
   <body>
     <!-- All content goes here -->
     <div id="all-contents">
       <nav>
-     <h1> Madison's First Website </h1>
-     <ul id="nal-uv">
-     <li class="nav-li">
-      <a href="index.html">Home</a>
-     </li>
-      <li class="nav-li">
-        <a href="portfolio.html">Portfolio</a>
-      </li>
-      <li class="nav-li"><a id="navanchor" href="images.html">Images</a>
-                    </li>
-     </ul>
+        <h1>Madison's First Website</h1>
+        <ul id="nav-ul">
+          <li class="nav-li">
+            <a id="navanchor" href="index.html">Home</a>
+          </li>
+          <li class="nav-li">
+            <a id="navanchor" href="portfolio.html">Portfolio</a>
+          </li>
+          <li class="nav-li">
+            <a id="navanchor" href="images.html">Images</a>
+          </li>
+        </ul>
       </nav>
-    
       <main>
-        <!-- Sidebar section --> 
-         <div class="sidebar">
-    <img class="sidebar-img" src="assets/images (2).png">
-      </div>
-
-         <!-- Content section -->
+        <!-- Sidebar section -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px 40px;
+            justify-content: center;
+            margin-top: 40px;
+          "
+        >
+          <div class="sidebar">
+            <img class="sidebar-img" src="assets/1000010357.jpg" />
+          </div>
           <div class="content">
-          <h2>Madison</h2>
-          <p>Student at Covington High</p>
-        
-          <div id="interests">
-            <h3>Interests</h3>
-          <ul>
-            <li>Watching Shows</li>
-            <li>Reading</li>
-            <li>Writing</li>
-            <li>Going on Walks</li>
-          </ul>
+            <h2>Madison</h2>
+            <p>Student at Covington High</p>
+            <div id="interests">
+              <h3>Interests</h3>
+              <ul>
+                <li>Watching Shows</li>
+                <li>Reading</li>
+                <li>Writing</li>
+                <li>Going on Walks</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-      
       </main>
     </div>
   </body>

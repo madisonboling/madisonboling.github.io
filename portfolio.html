@@ -1,44 +1,511 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Madison's first website</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
+  <head>
+    <title>Madison's Portfolio</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=EB+Garamond:wght@500;700&display=swap");
+      body {
+        background: #f5ecd7;
+        color: #5a4632;
+        font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+        font-size: 20px;
+        padding: 0;
+        margin: 0;
+      }
+      #all-contents {
+        max-width: 1200px;
+        margin: auto;
+        background: #f5ecd7;
+        border-radius: 18px;
+        box-shadow: 0 4px 32px #bfae8a55;
+        padding-bottom: 40px;
+        min-height: 100vh;
+        border: 2px solid #d1bfa3;
+      }
+      nav {
+        background: #e7dbc3;
+        margin: 0 auto;
+        display: flex;
+        padding: 18px 32px;
+        border-radius: 18px 18px 0 0;
+        border-bottom: 2px solid #d1bfa3;
+        margin-bottom: 0;
+        align-items: center;
+        box-shadow: 0 2px 12px #bfae8a55;
+        font-family: "EB Garamond", Garamond, serif;
+      }
+      h1 {
+        display: flex;
+        align-items: center;
+        color: #7c5c36;
+        flex: 1;
+        margin: 0;
+        font-family: "EB Garamond", Garamond, serif;
+        font-size: 44px;
+        padding: 2px;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 8px #e7dbc3;
+        font-weight: 700;
+      }
+      #nav-ul {
+        list-style-image: none;
+      }
+      .nav-li {
+        display: inline-block;
+        padding: 5px;
+      }
+      #navanchor {
+        text-decoration: none;
+        color: #7c5c36;
+        padding-right: 25px;
+        font-family: "EB Garamond", Garamond, serif;
+        font-size: 22px;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+      }
+      #navanchor:hover {
+        color: #bfae8a;
+      }
+      .content {
+        flex: 1;
+        padding: 35px;
+      }
+      .portfolio-title {
+        font-family: "EB Garamond", Garamond, serif;
+        color: #7c5c36;
+        font-size: 3.2rem;
+        text-align: center;
+        margin-top: 48px;
+        margin-bottom: 18px;
+        letter-spacing: 2.5px;
+        text-shadow: 0 3px 12px #e7dbc3;
+        font-weight: 700;
+      }
+      .portfolio-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px 32px;
+        justify-content: center;
+        margin-top: 40px;
+      }
+      .portfolio-card {
+        background: #f3e3c3;
+        border: 2.5px solid #bfae8a;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px #bfae8a55, 0 0 0 2px #fff6 inset;
+        padding: 32px 28px;
+        margin: 0;
+        width: 340px;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .portfolio-card:hover {
+        box-shadow: 0 8px 32px #bfae8a99, 0 0 0 4px #e7dbc3 inset;
+        transform: translateY(-4px) scale(1.03);
+      }
+      .portfolio-card a {
+        color: #7c5c36;
+        font-size: 1.2rem;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+        font-family: "EB Garamond", Garamond, serif;
+      }
+      .portfolio-card a:hover {
+        color: #bfae8a;
+      }
+    </style>
+  </head>
 
-    <body>
-        <!-- !All content goes here -->
-         <div id="all-contents">
-         <nav>
+  <body>
+    <!-- !All content goes here -->
+    <div id="all-contents">
+      <nav>
         <h1>Madison's Portfolio</h1>
-        <ul i="nav-ul">
-            <li class="nav-li">
-                <a href="index.html">Home</a>
-            </li>
-            <li class="nav-li">
-                <a href="portfolio.html">Portfolio</a>
-            </li>
-              <li class="nav-li"><a id="navanchor" href="images.html">Images</a>
-                    </li>
+        <ul id="nav-ul">
+          <li class="nav-li">
+            <a id="navanchor" href="index.html">Home</a>
+          </li>
+          <li class="nav-li">
+            <a id="navanchor" href="portfolio.html">Portfolio</a>
+          </li>
+          <li class="nav-li">
+            <a id="navanchor" href="images.html">Images</a>
+          </li>
         </ul>
-         </nav>
+      </nav>
 
-         <main>
-         <div class="content">
-            <h1>Portfolio</h1>
-            <ul id="portfolio">
-                <li>
-        
-  <a href="fsd-projects/platformer/">Platformer: A cannon-dodging adventure game for Halleb0t</a>
-</li>
-<li>
-  <a href="fsd-projects/bouncing-box/">Bouncing Box: A fun introduction to web game development</a>
-</li>
-<li>
-  <a href="fsd-projects/circularity/">Circularity: A poetic motion experiment with circles</a>
-</li>
-            </ul>
-         </div>
-         </main>
-         </div>
-    </body>
+      <main>
+        <div class="content">
+          <div class="portfolio-title">Portfolio</div>
+          <div class="portfolio-list">
+            <div class="portfolio-card">
+              <a href="fsd-projects/platformer/"
+                >Platformer: A cannon-dodging adventure game for Halleb0t</a
+              >
+            </div>
+            <div class="portfolio-card">
+              <a href="fsd-projects/bouncing-box/"
+                >Bouncing Box: A fun introduction to web game development</a
+              >
+            </div>
+            <div class="portfolio-card">
+              <a href="fsd-projects/circularity/"
+                >Circularity: A poetic motion experiment with circles</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Image Gallery Slideshow (11 photos) -->
+        <section class="portfolio-gallery-section">
+          <h2 class="portfolio-gallery-title">Gallery</h2>
+          <div class="slideshow-container">
+            <div class="slideshow-slide fade" style="display: block">
+              <img
+                src="assets/DSC00086.JPG"
+                alt="Photo 1"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher1.jpg"
+                alt="Photo 2"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher2.jpg"
+                alt="Photo 3"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher3.jpg"
+                alt="Photo 4"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher.jpg"
+                alt="Photo 5"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher4.jpg"
+                alt="Photo 6"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher5.jpg"
+                alt="Photo 7"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/pitcher6.JPG"
+                alt="Photo 8"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/itcher7.jpg"
+                alt="Photo 9"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/DSC00512.JPG"
+                alt="Photo 10"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <div class="slideshow-slide fade">
+              <img
+                src="assets/DSC00539.JPG"
+                alt="Photo 11"
+                onclick="openModal(this)"
+                style="cursor: pointer"
+              />
+            </div>
+            <!-- Modal for enlarged image -->
+            <div id="imgModal" class="modal" onclick="closeModal(event)">
+              <span class="modal-close" onclick="closeModal(event)"
+                >&times;</span
+              >
+              <img class="modal-content" id="modalImg" />
+              <div id="modalCaption"></div>
+            </div>
+            <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="slideshow-dots">
+              <span class="slideshow-dot" onclick="currentSlide(1)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(2)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(3)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(4)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(5)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(6)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(7)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(8)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(9)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(10)"> </span>
+              <span class="slideshow-dot" onclick="currentSlide(11)"> </span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <style>
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding-top: 60px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        animation: fadeIn 0.3s;
+      }
+      .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 80vw;
+        max-height: 80vh;
+        border-radius: 14px;
+        box-shadow: 0 8px 32px #bfae8a99;
+        border: 3px solid #fff6;
+        background: #fff6;
+        animation: zoomIn 0.3s;
+      }
+      .modal-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        color: #fff;
+        font-size: 48px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+        text-shadow: 0 2px 8px #000a;
+      }
+      #modalCaption {
+        color: #fff;
+        text-align: center;
+        margin-top: 16px;
+        font-size: 1.2rem;
+        text-shadow: 0 2px 8px #000a;
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0.5;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .portfolio-gallery-section {
+        margin-top: 60px;
+        margin-bottom: 40px;
+      }
+      .portfolio-gallery-title {
+        font-family: "EB Garamond", Garamond, serif;
+        color: #7c5c36;
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 24px;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 8px #e7dbc3;
+      }
+      .slideshow-container {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        background: #f3e3c3;
+        border: 2.5px solid #bfae8a;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px #bfae8a55, 0 0 0 2px #fff6 inset;
+        padding: 24px 0 40px 0;
+        min-height: 370px;
+      }
+      .slideshow-slide {
+        display: none;
+        text-align: center;
+      }
+      .slideshow-slide img {
+        width: 520px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px #bfae8a55;
+        border: 2.5px solid #d1bfa3;
+        filter: sepia(0.25) contrast(0.97) brightness(0.98);
+        background: #e7dbc3;
+      }
+      .slideshow-prev,
+      .slideshow-next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 8px 16px;
+        margin-top: -22px;
+        color: #7c5c36;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background: #f3e3c3cc;
+        border: 1.5px solid #bfae8a;
+        transition: background 0.2s;
+        z-index: 2;
+      }
+      .slideshow-next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .slideshow-prev {
+        left: 0;
+      }
+      .slideshow-prev:hover,
+      .slideshow-next:hover {
+        background: #e7dbc3;
+      }
+      .slideshow-dots {
+        text-align: center;
+        margin-top: 18px;
+      }
+      .slideshow-dot {
+        cursor: pointer;
+        height: 13px;
+        width: 13px;
+        margin: 0 3px;
+        background-color: #bfae8a;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s;
+        border: 1.5px solid #d1bfa3;
+      }
+      .slideshow-dot.active,
+      .slideshow-dot:hover {
+        background-color: #7c5c36;
+      }
+      .fade {
+        animation-name: fade;
+        animation-duration: 0.7s;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+    <script>
+      // Modal functionality for enlarging images
+      function openModal(imgElem) {
+        var modal = document.getElementById("imgModal");
+        var modalImg = document.getElementById("modalImg");
+        var captionText = document.getElementById("modalCaption");
+        modal.style.display = "block";
+        modalImg.src = imgElem.src;
+        captionText.innerHTML = imgElem.alt;
+      }
+      function closeModal(event) {
+        // Only close if clicking the close button or outside the image
+        if (
+          event.target.classList.contains("modal") ||
+          event.target.classList.contains("modal-close")
+        ) {
+          document.getElementById("imgModal").style.display = "none";
+        }
+      }
+      // Optional: Close modal on ESC key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          document.getElementById("imgModal").style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slideshow-slide");
+        let dots = document.getElementsByClassName("slideshow-dot");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+      // Add keyboard navigation for slideshow
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft") {
+          plusSlides(-1);
+        } else if (event.key === "ArrowRight") {
+          plusSlides(1);
+        }
+      });
+    </script>
+  </body>
 </html>
