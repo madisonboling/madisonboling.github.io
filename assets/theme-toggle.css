@@ -6,7 +6,6 @@
 /* Ensure borders/paddings don't change element size between themes */
 *,
 *::before,
-  
 *::after {
   box-sizing: border-box;
 }
