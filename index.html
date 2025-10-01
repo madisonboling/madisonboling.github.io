@@ -87,6 +87,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        /* prevent the sidebar from stretching to match the content height */
+        align-self: flex-start;
         background: #f3e3c3;
         border: 2.5px solid #bfae8a;
         border-radius: 14px;
@@ -94,6 +96,10 @@
       }
       .sidebar-img {
         width: 200px;
+        /* make the image a little taller (portrait feel) without stretching
+           Use object-fit so the image fills the box and crops cleanly */
+        height: 300px;
+        object-fit: cover;
         border-radius: 5px;
         border: 2.5px solid #bfae8a;
         border-style: solid;
@@ -120,6 +126,7 @@
         color: #7c5c36;
       }
     </style>
+    <link rel="stylesheet" href="assets/draw.css" />
   </head>
   <body>
     <!-- All content goes here -->
@@ -151,6 +158,89 @@
         >
           <div class="sidebar">
             <img class="sidebar-img" src="assets/1000010357.jpg" />
+            <!-- Like button under the photo -->
+            <div class="like-wrapper" style="margin-top: 12px">
+              <button
+                id="site-like-button"
+                aria-pressed="false"
+                aria-label="Like this website"
+                type="button"
+              >
+                <!-- white heart SVG -->
+                <svg
+                  id="like-heart"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 21s-7.5-4.9-9.5-8.1C.9 9.2 3.3 5 7 5c2 0 3 1 4 2 1-1 2-2 4-2 3.7 0 6.1 4.2 4.5 7.9C19.5 16.1 12 21 12 21z"
+                    fill="#ffffff"
+                  />
+                </svg>
+                <span id="like-count" style="margin-left: 8px; font-weight: 700"
+                  >0</span
+                >
+              </button>
+            </div>
+            <!-- simple "leave a like" textbox -->
+            <div
+              class="like-message"
+              style="margin-top: 8px; width: 100%; text-align: center"
+            >
+              <input
+                id="leave-like-text"
+                type="text"
+                placeholder="Type here!"
+                aria-label="Type here!"
+                style="
+                  padding: 6px 8px;
+                  border-radius: 8px;
+                  border: 1px solid #d1bfa3;
+                  background: #fffaf0;
+                  color: #3b2b1f;
+                  width: 160px;
+                "
+              />
+              <button
+                id="leave-like-submit"
+                type="button"
+                style="margin-left: 8px; padding: 6px 8px; border-radius: 8px"
+              >
+                Submit
+              </button>
+            </div>
+            <!-- admin-only reset (visible when ?admin=1) -->
+            <div class="like-admin" style="margin-top: 8px; display: none">
+              <button id="reset-likes-btn" type="button">Reset likes</button>
+            </div>
+            <!-- live preview removed per request -->
+            <!-- submitted messages -->
+            <div
+              class="like-messages"
+              style="
+                margin-top: 8px;
+                text-align: left;
+                max-width: 220px;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            >
+              <h4 style="margin: 6px 0 4px 0">Messages</h4>
+              <ul
+                id="like-messages-list"
+                style="
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  max-height: 200px;
+                  overflow: auto;
+                "
+              ></ul>
+            </div>
           </div>
           <div class="content">
             <h2>Madison</h2>
@@ -158,16 +248,112 @@
             <div id="interests">
               <h3>Interests</h3>
               <ul>
-                <li>Watching Shows</li>
+                <li>Editing</li>
                 <li>Reading</li>
                 <li>Writing</li>
-                <li>Going on Walks</li>
+                <li>Exploring</li>
+                <li>Band</li>
               </ul>
             </div>
+            <!-- Drawing widget -->
+            <section id="draw-section" aria-label="Drawing box">
+              <div class="draw-controls">
+                <label
+                  >Color <input type="color" id="draw-color" value="#7c5c36"
+                /></label>
+                <label
+                  >Size
+                  <input
+                    type="range"
+                    id="draw-size"
+                    min="1"
+                    max="60"
+                    value="12"
+                /></label>
+                <button id="draw-clear" type="button">Clear</button>
+                <button id="draw-eraser" type="button">Eraser</button>
+                <button id="draw-save" type="button">Save PNG</button>
+              </div>
+              <div class="draw-wrapper">
+                <div class="brush-sidebar" aria-hidden="false">
+                  <div class="brush-title">Brushes</div>
+                  <button
+                    class="brush-btn"
+                    data-brush="round"
+                    aria-pressed="true"
+                    type="button"
+                  >
+                    Round
+                  </button>
+                  <button class="brush-btn" data-brush="square" type="button">
+                    Square
+                  </button>
+                  <button class="brush-btn" data-brush="marker" type="button">
+                    Marker
+                  </button>
+                  <button class="brush-btn" data-brush="chalk" type="button">
+                    Chalk
+                  </button>
+                  <button class="brush-btn" data-brush="spray" type="button">
+                    Spray
+                  </button>
+                  <div class="brush-previews" aria-hidden="true">
+                    <canvas
+                      class="brush-preview"
+                      data-brush="round"
+                      width="120"
+                      height="44"
+                      title="Round preview"
+                    ></canvas>
+                    <canvas
+                      class="brush-preview"
+                      data-brush="square"
+                      width="120"
+                      height="44"
+                      title="Square preview"
+                    ></canvas>
+                    <canvas
+                      class="brush-preview"
+                      data-brush="marker"
+                      width="120"
+                      height="44"
+                      title="Marker preview"
+                    ></canvas>
+                    <canvas
+                      class="brush-preview"
+                      data-brush="chalk"
+                      width="120"
+                      height="44"
+                      title="Chalk preview"
+                    ></canvas>
+                    <canvas
+                      class="brush-preview"
+                      data-brush="spray"
+                      width="120"
+                      height="44"
+                      title="Spray preview"
+                    ></canvas>
+                  </div>
+                </div>
+                <div class="draw-canvas-area">
+                  <canvas
+                    id="draw-canvas"
+                    tabindex="0"
+                    aria-label="Canvas for drawing"
+                  ></canvas>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </main>
     </div>
   </body>
   <script src="assets/theme-toggle.js"></script>
+  <script src="assets/draw.js"></script>
+  <!-- Optional: firebase for global likes. Fill assets/firebase-config.js to enable -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="assets/firebase-config.js"></script>
+  <script src="assets/like.js"></script>
 </html>

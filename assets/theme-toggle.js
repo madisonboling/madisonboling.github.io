@@ -21,7 +21,7 @@
         <button id="theme-light-btn">Light</button>
         <button id="theme-dark-btn">Dark</button>
       </div>
-      <div style="font-size:12px;margin-top:8px;color:#666">Shortcut: Shift + M</div>
+      <div style="font-size:12px;margin-top:8px;color:#666">Shortcut: Shift + Ctrl</div>
     `;
     return pop;
   }
@@ -98,13 +98,25 @@
     };
     setInitial();
 
-    // keyboard shortcut: Shift + M
-    document.addEventListener("keydown", function (e) {
-      if ((e.key === "M" || e.key === "m") && e.shiftKey) {
-        const is = document.documentElement.classList.contains("dark-theme");
-        applyTheme(!is);
-      }
-    });
+    // keyboard shortcut: Shift + Ctrl (press both modifiers together to toggle)
+    (function () {
+      const state = { shift: false, ctrl: false, triggered: false };
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Shift") state.shift = true;
+        if (e.key === "Control") state.ctrl = true;
+        if (state.shift && state.ctrl && !state.triggered) {
+          state.triggered = true;
+          const is = document.documentElement.classList.contains("dark-theme");
+          applyTheme(!is);
+        }
+      });
+      document.addEventListener("keyup", function (e) {
+        if (e.key === "Shift") state.shift = false;
+        if (e.key === "Control") state.ctrl = false;
+        // reset trigger when either key is released so another toggle can occur on next hold
+        if (!state.shift || !state.ctrl) state.triggered = false;
+      });
+    })();
 
     // initialize from storage
     try {

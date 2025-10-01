@@ -241,3 +241,112 @@ nav a {
     min-width: 180px;
   }
 }
+
+/* Like button under the photo */
+.like-wrapper button#site-like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: linear-gradient(#fffaf0, #f3e9d8);
+  border: 1px solid #d1bfa3;
+  color: #3b2b1f;
+  cursor: pointer;
+}
+.like-wrapper button#site-like-button[aria-pressed="true"] {
+  background: linear-gradient(#f3e9d8, #e5cfad);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) inset;
+}
+.like-wrapper #like-heart path {
+  fill: #ffffff;
+}
+
+/* Dark theme like button */
+html.dark-theme .like-wrapper button#site-like-button {
+  background: linear-gradient(#3b2b1f, #2c1e15);
+  border: 1px solid #4a3726;
+  color: #f3e8d7;
+}
+html.dark-theme .like-wrapper button#site-like-button[aria-pressed="true"] {
+  background: linear-gradient(#4a3726, #3b2b1f);
+}
+html.dark-theme .like-wrapper #like-heart path {
+  fill: #f3e8d7;
+}
+
+/* admin reset button */
+.like-admin button#reset-likes-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bfae8a;
+  background: linear-gradient(#fffaf0, #f3e9d8);
+  color: #7c5c36;
+  cursor: pointer;
+}
+html.dark-theme .like-admin button#reset-likes-btn {
+  background: linear-gradient(#3b2b1f, #2c1e15);
+  color: #f3e8d7;
+  border-color: #4a3726;
+}
+
+/* live preview for leave-a-like text */
+.like-preview #leave-like-display {
+  font-style: italic;
+  color: #6b5138;
+}
+html.dark-theme .like-preview #leave-like-display {
+  color: #e9dcc3;
+}
+
+/* saved messages */
+.like-messages h4 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.like-messages ul#like-messages-list li {
+  background: rgba(255, 255, 255, 0.6);
+  margin-bottom: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #e6d8be;
+  color: #3b2b1f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.like-messages ul#like-messages-list li .msg-text {
+  flex: 1;
+  margin-right: 8px;
+}
+.like-messages ul#like-messages-list li button.delete-msg {
+  background: transparent;
+  border: none;
+  color: #a63a3a;
+  cursor: pointer;
+  font-size: 16px;
+}
+html.dark-theme .like-messages ul#like-messages-list li {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.04);
+  color: #efe2cf;
+}
+html.dark-theme .like-messages ul#like-messages-list li button.delete-msg {
+  color: #ffbdbd;
+}
+
+/* Leave-a-like textbox */
+.like-message input#leave-like-text {
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+.like-message input#leave-like-text:focus {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+html.dark-theme .like-message input#leave-like-text {
+  background: #3b2b1f;
+  color: #efe2cf;
+  border: 1px solid #4a3726;
+}

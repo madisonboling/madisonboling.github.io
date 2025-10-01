@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>platformer</title>
     <link href="platformer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/theme-toggle.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=EB+Garamond:wght@500;700&display=swap"
       rel="stylesheet"
@@ -12,6 +13,12 @@
     <script src="setup.js"></script>
     <script src="helpers.js"></script>
     <script src="platformer.js"></script>
+    <script>
+      try {
+        if (localStorage.getItem("siteDarkTheme") === "1")
+          document.documentElement.classList.add("dark-theme");
+      } catch (e) {}
+    </script>
   </head>
 
   <body id="body">
